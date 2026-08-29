@@ -106,5 +106,65 @@
     "accessed_at": "2026-08-29",
     "reliability": "high",
     "claim_scope": "confirmed unaffected; funds secure and operational"
+  },
+  {
+    "id": "ccr_evidence_000010",
+    "subject_ids": ["ccr_program_000005"],
+    "source_type": "official_documentation",
+    "title": "MetaMask Card product page",
+    "url": "https://metamask.io/card",
+    "publisher": "MetaMask",
+    "published_at": null,
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "program identity, supported assets and networks, self-custodial spending model"
+  },
+  {
+    "id": "ccr_evidence_000011",
+    "subject_ids": ["ccr_program_000005", "ccr_provider_000004", "ccr_provider_000005"],
+    "source_type": "official_documentation",
+    "title": "MetaMask Card security and privacy",
+    "url": "https://support.metamask.io/manage-crypto/metamask-card/security-privacy/",
+    "publisher": "MetaMask",
+    "published_at": null,
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "Crypto Life and Mastercard relationships, Crypto Life account/KYC role, self-custody boundary"
+  },
+  {
+    "id": "ccr_evidence_000012",
+    "subject_ids": ["ccr_program_000006", "ccr_provider_000002", "ccr_provider_000003", "ccr_provider_000006"],
+    "source_type": "official_documentation",
+    "title": "Coinbase Card use and provider disclosures",
+    "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/coinbase-card/use-cb-card",
+    "publisher": "Coinbase",
+    "published_at": null,
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "program identity, Pathward issuer, Marqeta processor, Visa network relationship"
+  },
+  {
+    "id": "ccr_evidence_000013",
+    "subject_ids": ["ccr_program_000007", "ccr_provider_000006"],
+    "source_type": "official_documentation",
+    "title": "ether.fi Cash frequently asked questions",
+    "url": "https://help.ether.fi/en/articles/262378-frequently-asked-questions",
+    "publisher": "ether.fi",
+    "published_at": "2026-04-01",
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "program identity, credit-card model and Visa acceptance relationship"
+  },
+  {
+    "id": "ccr_evidence_000014",
+    "subject_ids": ["ccr_program_000005"],
+    "source_type": "official_documentation",
+    "title": "MetaMask Card availability and Metal-card pause",
+    "url": "https://support.metamask.io/manage-crypto/metamask-card/what-is-metamask-card/",
+    "publisher": "MetaMask",
+    "published_at": null,
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "temporary U.S. signup limitation and Metal-card order pause as of 2026-06-02"
   }
 ]

@@ -18,5 +18,65 @@
     "end_date": null,
     "confidence": "high",
     "evidence_ids": ["ccr_evidence_000007"]
+  },
+  {
+    "id": "ccr_relation_000003",
+    "from_id": "ccr_program_000005",
+    "to_id": "ccr_provider_000004",
+    "relation_type": "uses_provider",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000011"]
+  },
+  {
+    "id": "ccr_relation_000004",
+    "from_id": "ccr_program_000005",
+    "to_id": "ccr_provider_000005",
+    "relation_type": "uses_network",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000011"]
+  },
+  {
+    "id": "ccr_relation_000005",
+    "from_id": "ccr_program_000006",
+    "to_id": "ccr_provider_000002",
+    "relation_type": "issued_by",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000012"]
+  },
+  {
+    "id": "ccr_relation_000006",
+    "from_id": "ccr_program_000006",
+    "to_id": "ccr_provider_000003",
+    "relation_type": "processed_by",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000012"]
+  },
+  {
+    "id": "ccr_relation_000007",
+    "from_id": "ccr_program_000006",
+    "to_id": "ccr_provider_000006",
+    "relation_type": "uses_network",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000012"]
+  },
+  {
+    "id": "ccr_relation_000008",
+    "from_id": "ccr_program_000007",
+    "to_id": "ccr_provider_000006",
+    "relation_type": "uses_network",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000013"]
   }
 ]

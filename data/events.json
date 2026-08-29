@@ -108,5 +108,16 @@
     "impact_level": "low",
     "confidence": "high",
     "evidence_ids": ["ccr_evidence_000009"]
+  },
+  {
+    "id": "ccr_event_000011",
+    "entity_id": "ccr_program_000005",
+    "event_type": "card_service_limited",
+    "event_date": "2026-06-02",
+    "title": "MetaMask Metal Card orders temporarily paused",
+    "description": "MetaMask documentation states that orders for the Metal Card were temporarily paused as of June 2, 2026, while existing eligible card usage remained available according to the applicable regional terms.",
+    "impact_level": "medium",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000014"]
   }
 ]
