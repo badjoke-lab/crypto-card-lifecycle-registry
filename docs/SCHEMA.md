@@ -70,6 +70,13 @@ Minimum fields:
 - `confidence`
 - `evidence_ids[]`
 
+Optional regional fields:
+
+- `jurisdiction_scope[]` — explicit countries, regulatory regions, or card-program regions to which the relationship applies
+- `scope_note` — a concise caveat when a legacy or regional relationship needs context that cannot be expressed by dates alone
+
+Absence of `jurisdiction_scope` means the evidence supports the relationship without a narrower regional qualification. A region-specific issuer, processor, programme manager, or network relationship must not be generalized into an unscoped global relationship.
+
 Initial relation types:
 
 - `uses_provider`
@@ -96,6 +103,10 @@ Minimum fields:
 - `impact_level`
 - `confidence`
 - `evidence_ids[]`
+
+Optional regional fields:
+
+- `jurisdiction_scope[]` — explicit countries or regions affected by the event when the event does not apply to the entity globally
 
 Initial event types:
 
