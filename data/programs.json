@@ -68,5 +68,35 @@
     "official_url": "https://www.ether.fi/app/cash/card",
     "confidence": "high",
     "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000008",
+    "slug": "gnosis-pay-card",
+    "canonical_name": "Gnosis Pay Card",
+    "status": "active",
+    "summary": "Self-custodial crypto debit card that lets users spend supported stablecoins from a Gnosis Safe wallet through the Visa network without preloading funds into a custodial card balance.",
+    "official_url": "https://gnosispay.com/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000009",
+    "slug": "minipay-card",
+    "canonical_name": "MiniPay Card",
+    "status": "active",
+    "summary": "Digital Visa debit card inside Opera's MiniPay wallet that spends from the user's self-custodial stablecoin balance and is powered by Gnosis Pay.",
+    "official_url": "https://www.minipay.to/virtual-card",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000010",
+    "slug": "crypto-com-visa-signature-credit-card",
+    "canonical_name": "Crypto.com Visa Signature Credit Card",
+    "status": "active",
+    "summary": "U.S. Visa Signature credit card integrated with Crypto.com's app and rewards program, distinct from the Crypto.com Prepaid Visa Card.",
+    "official_url": "https://crypto.com/us/cards",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
   }
 ]
