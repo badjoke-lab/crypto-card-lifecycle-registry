@@ -119,5 +119,16 @@
     "impact_level": "medium",
     "confidence": "high",
     "evidence_ids": ["ccr_evidence_000014"]
+  },
+  {
+    "id": "ccr_event_000012",
+    "entity_id": "ccr_program_000009",
+    "event_type": "launched",
+    "event_date": "2026-06-23",
+    "title": "MiniPay launches its Visa debit card",
+    "description": "Gnosis Pay announced the launch of the MiniPay Card as a digital Visa debit card inside Opera's MiniPay wallet, powered by Gnosis Pay and issued through Monavate.",
+    "impact_level": "low",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000016"]
   }
 ]
