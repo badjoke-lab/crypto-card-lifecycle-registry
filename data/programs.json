@@ -28,5 +28,15 @@
     "official_url": "https://kast.xyz/",
     "confidence": "high",
     "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000004",
+    "slug": "solayer-pay",
+    "canonical_name": "Solayer Pay",
+    "status": "active",
+    "summary": "Crypto-native Visa-compatible card program for spending USDC and other supported stablecoin balances in real-world payments, documented by Solayer as on-chain and non-custodial.",
+    "official_url": "https://solayer.org/product/solayer-pay",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
   }
 ]
