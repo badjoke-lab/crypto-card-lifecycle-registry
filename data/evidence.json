@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "id": "ccr_evidence_000001",
+    "subject_ids": ["ccr_provider_000001"],
+    "source_type": "official_social",
+    "title": "Rain incident statement on outdated Solana contracts",
+    "url": "https://x.com/raincards/status/2093435073081053518",
+    "publisher": "Rain",
+    "published_at": "2026-08-28",
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "provider incident, contract upgrade, remediation and reimbursement"
+  },
+  {
+    "id": "ccr_evidence_000002",
+    "subject_ids": ["ccr_program_000001", "ccr_provider_000001"],
+    "source_type": "other",
+    "title": "Mirrored Avici incident update and reimbursement statement",
+    "url": "https://zamantika.com/th/SneakypeekSol/status/2093483770712359221",
+    "publisher": "Avici (mirrored official social post)",
+    "published_at": "2026-08-28",
+    "accessed_at": "2026-08-29",
+    "reliability": "medium",
+    "claim_scope": "Avici impact, Rain relationship, affected-user reconciliation and reimbursement"
+  },
+  {
+    "id": "ccr_evidence_000003",
+    "subject_ids": ["ccr_program_000002", "ccr_provider_000001"],
+    "source_type": "other",
+    "title": "Mirrored Tria incident updates on Solana card balances",
+    "url": "https://mobile.twstalker.com/usetria",
+    "publisher": "Tria (mirrored official social posts)",
+    "published_at": "2026-08-28",
+    "accessed_at": "2026-08-29",
+    "reliability": "medium",
+    "claim_scope": "unauthorized withdrawal reports, Rain program-card context and resolution"
+  },
+  {
+    "id": "ccr_evidence_000004",
+    "subject_ids": ["ccr_program_000003"],
+    "source_type": "official_social",
+    "title": "KAST confirms it was not impacted",
+    "url": "https://x.com/KASTxyz/status/2093441747464405120",
+    "publisher": "KAST",
+    "published_at": "2026-08-28",
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "confirmed unaffected"
+  }
+]
