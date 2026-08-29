@@ -1,1 +1,90 @@
-[]
+[
+  {
+    "id": "ccr_event_000001",
+    "entity_id": "ccr_provider_000001",
+    "event_type": "vulnerability_discovered",
+    "event_date": "2026-08-28",
+    "title": "Vulnerability discovered in outdated Solana contracts",
+    "description": "Rain said its monitoring systems discovered a vulnerability affecting a small number of programs using an outdated version of its Solana contracts; other programs were not impacted.",
+    "impact_level": "critical",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000001"]
+  },
+  {
+    "id": "ccr_event_000002",
+    "entity_id": "ccr_provider_000001",
+    "event_type": "contract_upgraded",
+    "event_date": "2026-08-28",
+    "title": "Outdated Solana contract programs upgraded",
+    "description": "Rain said all programs using the outdated Solana contract version were successfully upgraded and that the immediate situation was resolved.",
+    "impact_level": "high",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000001"]
+  },
+  {
+    "id": "ccr_event_000003",
+    "entity_id": "ccr_provider_000001",
+    "event_type": "reimbursement_announced",
+    "event_date": "2026-08-28",
+    "title": "Rain announces affected users will be made whole",
+    "description": "Rain announced that all affected users would be made whole and that remediation had begun.",
+    "impact_level": "high",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000001"]
+  },
+  {
+    "id": "ccr_event_000004",
+    "entity_id": "ccr_provider_000001",
+    "event_type": "forensic_investigation",
+    "event_date": "2026-08-28",
+    "title": "Third-party forensic investigation announced",
+    "description": "Rain said it engaged third-party forensic experts and would work with law enforcement and relevant regulatory authorities.",
+    "impact_level": "high",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000001"]
+  },
+  {
+    "id": "ccr_event_000005",
+    "entity_id": "ccr_program_000001",
+    "event_type": "unauthorized_withdrawal",
+    "event_date": "2026-08-28",
+    "title": "Avici card balances affected by unauthorized withdrawals",
+    "description": "Avici said the affected assets were in a separate Solana card-balance contract rather than users' self-custodial wallets. Its reconciliation reported 1,685 affected users and $500,859.22 in affected card balances.",
+    "impact_level": "critical",
+    "confidence": "medium",
+    "evidence_ids": ["ccr_evidence_000002"]
+  },
+  {
+    "id": "ccr_event_000006",
+    "entity_id": "ccr_program_000001",
+    "event_type": "reimbursement_announced",
+    "event_date": "2026-08-28",
+    "title": "Avici announces full card-balance reimbursement",
+    "description": "Avici said every affected user's card balance would be refunded in full.",
+    "impact_level": "high",
+    "confidence": "medium",
+    "evidence_ids": ["ccr_evidence_000002"]
+  },
+  {
+    "id": "ccr_event_000007",
+    "entity_id": "ccr_program_000002",
+    "event_type": "unauthorized_withdrawal",
+    "event_date": "2026-08-28",
+    "title": "Tria reports unauthorized withdrawals from Solana card balances",
+    "description": "Tria reported unauthorized withdrawal reports involving Solana USDC/USDT topped up to card balances and later stated that the issue affecting Solana card balances had been resolved and affected users would be made whole.",
+    "impact_level": "critical",
+    "confidence": "medium",
+    "evidence_ids": ["ccr_evidence_000003"]
+  },
+  {
+    "id": "ccr_event_000008",
+    "entity_id": "ccr_program_000003",
+    "event_type": "confirmed_unaffected",
+    "event_date": "2026-08-28",
+    "title": "KAST confirms it was not affected",
+    "description": "KAST publicly stated that it was aware of the situation affecting other card providers and that KAST was not affected.",
+    "impact_level": "low",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000004"]
+  }
+]
