@@ -1,6 +1,6 @@
 # Roadmap
 
-## Phase 0 — Bootstrap
+## Phase 0 — Bootstrap — COMPLETE
 
 - repository operating rules
 - scope boundary
@@ -8,35 +8,48 @@
 - empty canonical datasets
 - research/staging boundary
 
-## Phase 1 — Rain incident evidence package
+## Phase 1 — Rain incident evidence package — COMPLETE / FOLLOW-UP OPEN
 
-- Rain provider profile candidate
-- Avici program profile candidate
-- Tria program profile candidate
-- Solayer Pay program profile candidate
-- KAST program profile candidate
-- provider-program relationship evidence
+Completed:
+- Rain provider profile
+- Avici program profile
+- Tria program profile
+- Solayer Pay program profile
+- KAST program profile
+- provider-program relationship evidence where supported
 - Rain Solana contract incident timeline
-- explicit affected / unaffected / unresolved program impact states
-- reimbursement state tracking
+- explicit affected / unaffected program impact states
+- direct first-party evidence upgrade
 
-Canonical promotion requires evidence-backed review. Staging research is not publication data.
+Ongoing follow-up is tracked separately in Issue #1:
+- reimbursement completion
+- Rain/forensics technical postmortem
+- authoritative cross-program loss total
 
-## Phase 2 — Validation and CI
+These follow-ups do not block record growth.
 
-- JSON schema or equivalent validation
+## Phase 2 — Validation and CI — COMPLETE
+
+- equivalent schema validation in `scripts/validate.mjs`
 - ID uniqueness
+- required-field validation
+- status/type/event/source enum validation
+- URL/date validation
 - referential integrity
-- enum validation
 - evidence-link requirements
-- provider/program impact-boundary checks
+- relation evidence must name both endpoints
+- event evidence must name the event entity
+- provider/program incident-boundary enforcement through evidence scoping
 
-## Phase 3 — Initial public dataset
+## Phase 3 — Initial public dataset — CURRENT
 
-- reviewed first batch of programs/providers
+- reviewed first batch of additional programs/providers
 - material launch/provider-change/incident events
 - evidence coverage requirements
+- bounded review batches
 - no thin card-list growth for count alone
+
+See `docs/RECORD_GROWTH_POLICY.md`.
 
 ## Phase 4 — Static public UI
 
@@ -57,4 +70,4 @@ Canonical promotion requires evidence-backed review. Staging research is not pub
 
 ## Current lane
 
-Phase 1 is the immediate lane after bootstrap. The Rain/Avici incident family is the first evidence package, but it must not be promoted with unresolved cross-program assumptions.
+Phase 3 record growth is the main development lane. Rain follow-up in Issue #1 runs in parallel and must not stall unrelated canonical growth.
