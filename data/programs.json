@@ -16,7 +16,7 @@
     "status": "active",
     "summary": "Self-custodial neofinance and crypto card program that reported unauthorized withdrawals from Solana card balances during the August 2026 Rain incident and later reported the issue resolved.",
     "official_url": "https://www.tria.so/",
-    "confidence": "medium",
+    "confidence": "high",
     "last_verified_at": "2026-08-29"
   },
   {
@@ -34,7 +34,7 @@
     "slug": "solayer-pay",
     "canonical_name": "Solayer Pay",
     "status": "active",
-    "summary": "Crypto-native Visa-compatible card program for spending USDC and other supported stablecoin balances in real-world payments, documented by Solayer as on-chain and non-custodial.",
+    "summary": "Crypto-native Visa-compatible card program for spending USDC and other supported stablecoin balances in real-world payments, documented by Solayer as on-chain and non-custodial. Solayer Pay explicitly stated it was not affected by the August 2026 Rain incident.",
     "official_url": "https://solayer.org/product/solayer-pay",
     "confidence": "high",
     "last_verified_at": "2026-08-29"
