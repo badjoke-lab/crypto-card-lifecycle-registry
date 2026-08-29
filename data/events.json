@@ -51,7 +51,7 @@
     "title": "Avici card balances affected by unauthorized withdrawals",
     "description": "Avici said the affected assets were in a separate Solana card-balance contract rather than users' self-custodial wallets. Its reconciliation reported 1,685 affected users and $500,859.22 in affected card balances.",
     "impact_level": "critical",
-    "confidence": "medium",
+    "confidence": "high",
     "evidence_ids": ["ccr_evidence_000002"]
   },
   {
@@ -62,7 +62,7 @@
     "title": "Avici announces full card-balance reimbursement",
     "description": "Avici said every affected user's card balance would be refunded in full.",
     "impact_level": "high",
-    "confidence": "medium",
+    "confidence": "high",
     "evidence_ids": ["ccr_evidence_000002"]
   },
   {
@@ -71,9 +71,9 @@
     "event_type": "unauthorized_withdrawal",
     "event_date": "2026-08-28",
     "title": "Tria reports unauthorized withdrawals from Solana card balances",
-    "description": "Tria reported unauthorized withdrawal reports involving Solana USDC/USDT topped up to card balances and later stated that the issue affecting Solana card balances had been resolved and affected users would be made whole.",
+    "description": "Tria reported unauthorized withdrawal reports involving Solana USDC/USDT topped up to card balances.",
     "impact_level": "critical",
-    "confidence": "medium",
+    "confidence": "high",
     "evidence_ids": ["ccr_evidence_000003"]
   },
   {
@@ -86,5 +86,27 @@
     "impact_level": "low",
     "confidence": "high",
     "evidence_ids": ["ccr_evidence_000004"]
+  },
+  {
+    "id": "ccr_event_000009",
+    "entity_id": "ccr_program_000002",
+    "event_type": "reimbursement_announced",
+    "event_date": "2026-08-28",
+    "title": "Tria says issue resolved and affected users will be made whole",
+    "description": "Tria stated that the issue affecting Solana card balances had been resolved and that all affected users would be made whole. This is not evidence that reimbursement had already completed.",
+    "impact_level": "high",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000008"]
+  },
+  {
+    "id": "ccr_event_000010",
+    "entity_id": "ccr_program_000004",
+    "event_type": "confirmed_unaffected",
+    "event_date": "2026-08-28",
+    "title": "Solayer Pay confirms it was not affected",
+    "description": "Solayer Pay stated that it was not affected and that its funds were secure and operational.",
+    "impact_level": "low",
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000009"]
   }
 ]
