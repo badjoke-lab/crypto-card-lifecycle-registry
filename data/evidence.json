@@ -21,7 +21,7 @@
     "published_at": "2026-08-28",
     "accessed_at": "2026-08-29",
     "reliability": "medium",
-    "claim_scope": "Avici impact, Rain relationship, affected-user reconciliation and reimbursement"
+    "claim_scope": "Avici impact, affected-user reconciliation and reimbursement"
   },
   {
     "id": "ccr_evidence_000003",
@@ -33,7 +33,7 @@
     "published_at": "2026-08-28",
     "accessed_at": "2026-08-29",
     "reliability": "medium",
-    "claim_scope": "unauthorized withdrawal reports, Rain program-card context and resolution"
+    "claim_scope": "unauthorized withdrawal reports and resolution"
   },
   {
     "id": "ccr_evidence_000004",
@@ -58,5 +58,29 @@
     "accessed_at": "2026-08-29",
     "reliability": "high",
     "claim_scope": "program identity, card functionality, Visa compatibility, USDC spending, on-chain and non-custodial positioning"
+  },
+  {
+    "id": "ccr_evidence_000006",
+    "subject_ids": ["ccr_program_000001", "ccr_provider_000001"],
+    "source_type": "official_documentation",
+    "title": "Avici introduction and card provider documentation",
+    "url": "https://docs.avici.money/getting-started/intro",
+    "publisher": "Avici",
+    "published_at": null,
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "Avici card program identity and Rain-issued Visa card relationship"
+  },
+  {
+    "id": "ccr_evidence_000007",
+    "subject_ids": ["ccr_program_000002", "ccr_provider_000001"],
+    "source_type": "official_documentation",
+    "title": "Tria international card terms",
+    "url": "https://docs.tria.so/card-terms-international",
+    "publisher": "Tria",
+    "published_at": "2026-01-09",
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "Tria card-program legal terms and Rain-hosted card-provider legal relationship"
   }
 ]
