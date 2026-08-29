@@ -24,13 +24,15 @@
     <section class="explorer" aria-label="Relationship explorer">
       <div class="explorer-head">
         <div><span class="live-dot"></span><strong id="focus-label">Relationship field</strong></div>
-        <div class="legend"><span class="program-key">Program</span><span class="provider-key">Provider</span><span class="network-key">Network</span></div>
+        <div class="legend"><span class="program-key">Program</span><span class="provider-key">Infrastructure</span><span>Processor</span><span class="network-key">Network</span></div>
       </div>
       <div id="graph" class="graph" role="application" aria-label="Interactive crypto card relationship graph">
+        <div class="lane-guide lane-a">PROGRAM</div><div class="lane-guide lane-b">INFRASTRUCTURE</div><div class="lane-guide lane-c">PROCESSING</div><div class="lane-guide lane-d">NETWORK</div>
         <svg id="edges" aria-hidden="true"></svg>
         <div id="nodes"></div>
         <div id="empty" class="empty" hidden>No matching canonical records.</div>
       </div>
+      <div id="mobile-paths" class="mobile-paths" aria-label="Relationship paths"></div>
       <div id="incident-window" class="incident-window" hidden></div>
       <div id="focus-strip" class="focus-strip" aria-live="polite"></div>
     </section>
