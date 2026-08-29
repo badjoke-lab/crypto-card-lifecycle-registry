@@ -16,9 +16,15 @@ jobs:
       - name: Validate canonical data
         run: node scripts/validate.mjs
       - name: Check public UI JavaScript syntax
-        run: node --check app.js
+        run: |
+          node --check app.js
+          node --check public-ui.js
       - name: Check required public UI files
         run: |
           test -s index.html
           test -s styles.css
+          test -s role-graph.css
+          test -s overview.css
+          test -s accessibility.css
           test -s app.js
+          test -s public-ui.js
