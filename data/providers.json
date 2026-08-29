@@ -9,5 +9,60 @@
     "official_url": "https://rain.xyz/",
     "confidence": "high",
     "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_provider_000002",
+    "slug": "pathward",
+    "canonical_name": "Pathward, N.A.",
+    "provider_types": ["issuer"],
+    "status": "active",
+    "summary": "U.S. bank identified by Coinbase as the issuer of Coinbase Card.",
+    "official_url": "https://www.pathward.com/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_provider_000003",
+    "slug": "marqeta",
+    "canonical_name": "Marqeta",
+    "provider_types": ["processor"],
+    "status": "active",
+    "summary": "Card issuing and processing platform identified by Coinbase as powering Coinbase Card.",
+    "official_url": "https://www.marqeta.com/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_provider_000004",
+    "slug": "crypto-life-metamask-card",
+    "canonical_name": "Crypto Life",
+    "provider_types": ["program_manager", "other"],
+    "status": "active",
+    "summary": "Provider that manages MetaMask Card account onboarding, KYC and card-site operations according to MetaMask documentation.",
+    "official_url": "https://card.metamask.io/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_provider_000005",
+    "slug": "mastercard",
+    "canonical_name": "Mastercard",
+    "provider_types": ["network"],
+    "status": "active",
+    "summary": "Global card network used by crypto card programs including MetaMask Card.",
+    "official_url": "https://www.mastercard.com/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_provider_000006",
+    "slug": "visa",
+    "canonical_name": "Visa",
+    "provider_types": ["network"],
+    "status": "active",
+    "summary": "Global card network used by crypto card programs including Coinbase Card and ether.fi Cash.",
+    "official_url": "https://www.visa.com/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
   }
 ]
