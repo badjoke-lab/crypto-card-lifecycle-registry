@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "ccr_program_000001",
+    "slug": "avici",
+    "canonical_name": "Avici",
+    "status": "active",
+    "summary": "Self-custodial crypto card program whose separate Solana card-balance contract was affected by the August 2026 Rain incident.",
+    "official_url": "https://avici.money/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000002",
+    "slug": "tria",
+    "canonical_name": "Tria",
+    "status": "active",
+    "summary": "Self-custodial neofinance and crypto card program that reported unauthorized withdrawals from Solana card balances during the August 2026 Rain incident and later reported the issue resolved.",
+    "official_url": "https://www.tria.so/",
+    "confidence": "medium",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000003",
+    "slug": "kast",
+    "canonical_name": "KAST",
+    "status": "active",
+    "summary": "Crypto card program that publicly stated it was not affected by the August 2026 incident affecting other card providers.",
+    "official_url": "https://kast.xyz/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  }
+]
