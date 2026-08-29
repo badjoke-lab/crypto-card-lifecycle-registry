@@ -46,5 +46,17 @@
     "accessed_at": "2026-08-29",
     "reliability": "high",
     "claim_scope": "confirmed unaffected"
+  },
+  {
+    "id": "ccr_evidence_000005",
+    "subject_ids": ["ccr_program_000004"],
+    "source_type": "official_documentation",
+    "title": "Solayer Pay overview",
+    "url": "https://docs.solayer.org/solayer-pay/overview",
+    "publisher": "Solayer",
+    "published_at": null,
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "program identity, card functionality, Visa compatibility, USDC spending, on-chain and non-custodial positioning"
   }
 ]
