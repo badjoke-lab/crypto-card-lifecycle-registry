@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "ccr_provider_000001",
+    "slug": "rain",
+    "canonical_name": "Rain",
+    "provider_types": ["issuer", "processor", "program_manager", "collateral_contract", "settlement"],
+    "status": "active",
+    "summary": "Stablecoin-powered card infrastructure provider supporting card issuance and related payment operations.",
+    "official_url": "https://rain.xyz/",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  }
+]
