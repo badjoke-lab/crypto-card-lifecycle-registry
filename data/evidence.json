@@ -14,26 +14,26 @@
   {
     "id": "ccr_evidence_000002",
     "subject_ids": ["ccr_program_000001", "ccr_provider_000001"],
-    "source_type": "other",
-    "title": "Mirrored Avici incident update and reimbursement statement",
-    "url": "https://zamantika.com/th/SneakypeekSol/status/2093483770712359221",
-    "publisher": "Avici (mirrored official social post)",
+    "source_type": "official_social",
+    "title": "Avici incident reconciliation and reimbursement statement",
+    "url": "https://x.com/avici/status/2093439613201482068",
+    "publisher": "Avici",
     "published_at": "2026-08-28",
     "accessed_at": "2026-08-29",
-    "reliability": "medium",
+    "reliability": "high",
     "claim_scope": "Avici impact, affected-user reconciliation and reimbursement"
   },
   {
     "id": "ccr_evidence_000003",
     "subject_ids": ["ccr_program_000002", "ccr_provider_000001"],
-    "source_type": "other",
-    "title": "Mirrored Tria incident updates on Solana card balances",
-    "url": "https://mobile.twstalker.com/usetria",
-    "publisher": "Tria (mirrored official social posts)",
+    "source_type": "official_social",
+    "title": "Tria reports unauthorized withdrawals from Solana card balances",
+    "url": "https://x.com/useTria/status/2093433665258963450",
+    "publisher": "Tria",
     "published_at": "2026-08-28",
     "accessed_at": "2026-08-29",
-    "reliability": "medium",
-    "claim_scope": "unauthorized withdrawal reports and resolution"
+    "reliability": "high",
+    "claim_scope": "unauthorized withdrawals from Solana USDC/USDT card balances"
   },
   {
     "id": "ccr_evidence_000004",
@@ -82,5 +82,29 @@
     "accessed_at": "2026-08-29",
     "reliability": "high",
     "claim_scope": "Tria card-program legal terms and Rain-hosted card-provider legal relationship"
+  },
+  {
+    "id": "ccr_evidence_000008",
+    "subject_ids": ["ccr_program_000002"],
+    "source_type": "official_social",
+    "title": "Tria says Solana card-balance issue was resolved",
+    "url": "https://x.com/useTria/status/2093437827325505689",
+    "publisher": "Tria",
+    "published_at": "2026-08-28",
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "incident resolution and make-whole commitment"
+  },
+  {
+    "id": "ccr_evidence_000009",
+    "subject_ids": ["ccr_program_000004"],
+    "source_type": "official_social",
+    "title": "Solayer Pay confirms it was not affected",
+    "url": "https://x.com/Solayer_Pay/status/2093436293376286969",
+    "publisher": "Solayer Pay",
+    "published_at": "2026-08-28",
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "confirmed unaffected; funds secure and operational"
   }
 ]
