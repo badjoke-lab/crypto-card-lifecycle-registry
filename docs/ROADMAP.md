@@ -51,14 +51,22 @@ These follow-ups do not block record growth.
 
 See `docs/RECORD_GROWTH_POLICY.md`.
 
-## Phase 4 — Static public UI
+## Phase 4 — Graph-first public UI — DESIGN LOCKED / IMPLEMENTATION STARTED
 
-- registry home
-- program detail
-- provider detail
-- incident/event views
-- methodology/about
-- correction path
+CCLR will not use the standard Ledger Series KPI-card/table dashboard shell. The approved direction is a graph-first exploration interface documented in `docs/UI_SPEC.md`.
+
+Implementation slices:
+- responsive application shell and relationship-field viewport
+- canonical data loader / normalized graph model
+- node and edge focus/recentering
+- lifecycle history trace derived from canonical events
+- evidence access directly from relationships/events
+- provider-incident vs program-impact overlays
+- program/provider focus routes that preserve graph context
+- methodology/about and correction path
+- mobile focus-first navigation, accessibility and reduced-motion support
+
+Phase 4 implementation may proceed in parallel with bounded Phase 3 record-growth batches. Mockup-only facts must never be copied into canonical data.
 
 ## Phase 5 — Monitoring
 
@@ -68,6 +76,8 @@ See `docs/RECORD_GROWTH_POLICY.md`.
 - reimbursement follow-up
 - canonical data remains review-gated
 
-## Current lane
+## Current lanes
 
-Phase 3 record growth is the main development lane. Rain follow-up in Issue #1 runs in parallel and must not stall unrelated canonical growth.
+1. Phase 3 reviewed record growth remains the canonical-data lane.
+2. Phase 4 graph-first UI implementation runs in parallel and consumes only reviewed canonical data.
+3. Rain follow-up in Issue #1 runs separately and must not stall either lane.
