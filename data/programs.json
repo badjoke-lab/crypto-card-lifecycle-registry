@@ -38,5 +38,35 @@
     "official_url": "https://solayer.org/product/solayer-pay",
     "confidence": "high",
     "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000005",
+    "slug": "metamask-card",
+    "canonical_name": "MetaMask Card",
+    "status": "active",
+    "summary": "Self-custodial crypto debit card that lets eligible users spend supported tokens from MetaMask wherever Mastercard is accepted.",
+    "official_url": "https://metamask.io/card",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000006",
+    "slug": "coinbase-card",
+    "canonical_name": "Coinbase Card",
+    "status": "active",
+    "summary": "Coinbase prepaid debit card for spending cash or converted crypto at merchants that accept Visa debit cards.",
+    "official_url": "https://www.coinbase.com/card",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
+  },
+  {
+    "id": "ccr_program_000007",
+    "slug": "etherfi-cash",
+    "canonical_name": "ether.fi Cash",
+    "status": "active",
+    "summary": "Crypto-native credit card product from ether.fi that is designed to work anywhere Visa is accepted.",
+    "official_url": "https://www.ether.fi/app/cash/card",
+    "confidence": "high",
+    "last_verified_at": "2026-08-29"
   }
 ]
