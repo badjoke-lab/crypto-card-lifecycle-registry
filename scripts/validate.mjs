@@ -34,6 +34,11 @@ const assertArray = (value, label, { nonEmpty = false } = {}) => {
   if (nonEmpty && value.length === 0) throw new Error(`${label} must not be empty`);
 };
 
+const assertStringArray = (value, label) => {
+  assertArray(value, label, { nonEmpty: true });
+  if (value.some((item) => typeof item !== 'string' || !item.trim())) throw new Error(`${label} must contain non-empty strings`);
+};
+
 const assertHttpUrl = (value, label) => {
   let parsed;
   try {
@@ -107,6 +112,8 @@ for (const record of relations) {
   if (!confidenceValues.has(record.confidence)) throw new Error(`invalid relation confidence: ${record.confidence}`);
   assertDate(record.start_date, `relation ${record.id} start_date`, { nullable: true });
   assertDate(record.end_date, `relation ${record.id} end_date`, { nullable: true });
+  if ('jurisdiction_scope' in record) assertStringArray(record.jurisdiction_scope, `relation ${record.id} jurisdiction_scope`);
+  if ('scope_note' in record && (typeof record.scope_note !== 'string' || !record.scope_note.trim())) throw new Error(`relation ${record.id} scope_note must be a non-empty string`);
   assertArray(record.evidence_ids, `relation ${record.id} evidence_ids`, { nonEmpty: true });
   for (const evidenceId of record.evidence_ids) {
     if (!evidenceIds.has(evidenceId)) throw new Error(`relation ${record.id} references unknown evidence ${evidenceId}`);
@@ -124,6 +131,7 @@ for (const record of events) {
   if (!impacts.has(record.impact_level)) throw new Error(`invalid impact_level: ${record.impact_level}`);
   if (!confidenceValues.has(record.confidence)) throw new Error(`invalid event confidence: ${record.confidence}`);
   assertDate(record.event_date, `event ${record.id} event_date`);
+  if ('jurisdiction_scope' in record) assertStringArray(record.jurisdiction_scope, `event ${record.id} jurisdiction_scope`);
   assertArray(record.evidence_ids, `event ${record.id} evidence_ids`, { nonEmpty: true });
   for (const evidenceId of record.evidence_ids) {
     if (!evidenceIds.has(evidenceId)) throw new Error(`event ${record.id} references unknown evidence ${evidenceId}`);
