@@ -29,7 +29,30 @@ const uniqueIds = (records, label) => {
   return seen;
 };
 
+const assertArray = (value, label, { nonEmpty = false } = {}) => {
+  if (!Array.isArray(value)) throw new Error(`${label} must be an array`);
+  if (nonEmpty && value.length === 0) throw new Error(`${label} must not be empty`);
+};
+
+const assertHttpUrl = (value, label) => {
+  let parsed;
+  try {
+    parsed = new URL(value);
+  } catch {
+    throw new Error(`${label} must be a valid URL`);
+  }
+  if (!['http:', 'https:'].includes(parsed.protocol)) throw new Error(`${label} must use http/https`);
+};
+
+const assertDate = (value, label, { nullable = false } = {}) => {
+  if (nullable && value === null) return;
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value) || Number.isNaN(Date.parse(`${value}T00:00:00Z`))) {
+    throw new Error(`${label} must be YYYY-MM-DD${nullable ? ' or null' : ''}`);
+  }
+};
+
 const programStatuses = new Set(['active', 'limited', 'suspended', 'migrated', 'discontinued', 'unknown']);
+const providerStatuses = new Set(['active', 'limited', 'suspended', 'migrated', 'discontinued', 'unknown']);
 const providerTypes = new Set(['issuer', 'processor', 'program_manager', 'custody', 'collateral_contract', 'settlement', 'network', 'other']);
 const relationTypes = new Set(['uses_provider', 'issued_by', 'processed_by', 'uses_collateral_infrastructure', 'uses_settlement_infrastructure', 'uses_network', 'replaced_by', 'migrated_to']);
 const eventTypes = new Set(['launched', 'provider_changed', 'infrastructure_changed', 'vulnerability_discovered', 'exploit', 'unauthorized_withdrawal', 'card_service_limited', 'card_service_suspended', 'contract_upgraded', 'migration', 'reimbursement_announced', 'reimbursement_completed', 'forensic_investigation', 'regulatory_action', 'shutdown_announced', 'shutdown_effective', 'confirmed_unaffected', 'other']);
@@ -45,32 +68,53 @@ const evidenceIds = uniqueIds(evidence, 'evidence');
 uniqueIds(relations, 'relation');
 uniqueIds(events, 'event');
 
+const evidenceById = new Map(evidence.map((record) => [record.id, record]));
+
 for (const record of programs) {
   required(record, ['slug', 'canonical_name', 'status', 'summary', 'official_url', 'confidence', 'last_verified_at'], 'program');
   if (!programStatuses.has(record.status)) throw new Error(`invalid program status: ${record.status}`);
   if (!confidenceValues.has(record.confidence)) throw new Error(`invalid program confidence: ${record.confidence}`);
+  assertHttpUrl(record.official_url, `program ${record.id} official_url`);
+  assertDate(record.last_verified_at, `program ${record.id} last_verified_at`);
 }
 
 for (const record of providers) {
   required(record, ['slug', 'canonical_name', 'provider_types', 'status', 'summary', 'official_url', 'confidence', 'last_verified_at'], 'provider');
-  if (!Array.isArray(record.provider_types) || record.provider_types.length === 0) throw new Error(`provider ${record.id} needs provider_types`);
+  assertArray(record.provider_types, `provider ${record.id} provider_types`, { nonEmpty: true });
   for (const type of record.provider_types) if (!providerTypes.has(type)) throw new Error(`invalid provider type: ${type}`);
+  if (!providerStatuses.has(record.status)) throw new Error(`invalid provider status: ${record.status}`);
   if (!confidenceValues.has(record.confidence)) throw new Error(`invalid provider confidence: ${record.confidence}`);
+  assertHttpUrl(record.official_url, `provider ${record.id} official_url`);
+  assertDate(record.last_verified_at, `provider ${record.id} last_verified_at`);
 }
 
 for (const record of evidence) {
   required(record, ['subject_ids', 'source_type', 'title', 'url', 'publisher', 'published_at', 'accessed_at', 'reliability', 'claim_scope'], 'evidence');
-  if (!Array.isArray(record.subject_ids) || record.subject_ids.length === 0) throw new Error(`evidence ${record.id} needs subject_ids`);
+  assertArray(record.subject_ids, `evidence ${record.id} subject_ids`, { nonEmpty: true });
   if (!sourceTypes.has(record.source_type)) throw new Error(`invalid evidence source_type: ${record.source_type}`);
   if (!reliabilityValues.has(record.reliability)) throw new Error(`invalid evidence reliability: ${record.reliability}`);
+  assertHttpUrl(record.url, `evidence ${record.id} url`);
+  assertDate(record.published_at, `evidence ${record.id} published_at`, { nullable: true });
+  assertDate(record.accessed_at, `evidence ${record.id} accessed_at`);
+  for (const subjectId of record.subject_ids) if (!entityIds.has(subjectId)) throw new Error(`evidence ${record.id} references unknown subject ${subjectId}`);
 }
 
 for (const record of relations) {
   required(record, ['from_id', 'to_id', 'relation_type', 'start_date', 'end_date', 'confidence', 'evidence_ids'], 'relation');
   if (!entityIds.has(record.from_id) || !entityIds.has(record.to_id)) throw new Error(`relation ${record.id} references unknown entity`);
+  if (record.from_id === record.to_id) throw new Error(`relation ${record.id} cannot self-reference`);
   if (!relationTypes.has(record.relation_type)) throw new Error(`invalid relation_type: ${record.relation_type}`);
   if (!confidenceValues.has(record.confidence)) throw new Error(`invalid relation confidence: ${record.confidence}`);
-  for (const evidenceId of record.evidence_ids) if (!evidenceIds.has(evidenceId)) throw new Error(`relation ${record.id} references unknown evidence ${evidenceId}`);
+  assertDate(record.start_date, `relation ${record.id} start_date`, { nullable: true });
+  assertDate(record.end_date, `relation ${record.id} end_date`, { nullable: true });
+  assertArray(record.evidence_ids, `relation ${record.id} evidence_ids`, { nonEmpty: true });
+  for (const evidenceId of record.evidence_ids) {
+    if (!evidenceIds.has(evidenceId)) throw new Error(`relation ${record.id} references unknown evidence ${evidenceId}`);
+    const subjects = new Set(evidenceById.get(evidenceId).subject_ids);
+    if (!subjects.has(record.from_id) || !subjects.has(record.to_id)) {
+      throw new Error(`relation ${record.id} evidence ${evidenceId} must name both relation endpoints`);
+    }
+  }
 }
 
 for (const record of events) {
@@ -79,12 +123,15 @@ for (const record of events) {
   if (!eventTypes.has(record.event_type)) throw new Error(`invalid event_type: ${record.event_type}`);
   if (!impacts.has(record.impact_level)) throw new Error(`invalid impact_level: ${record.impact_level}`);
   if (!confidenceValues.has(record.confidence)) throw new Error(`invalid event confidence: ${record.confidence}`);
-  if (!Array.isArray(record.evidence_ids) || record.evidence_ids.length === 0) throw new Error(`event ${record.id} requires evidence`);
-  for (const evidenceId of record.evidence_ids) if (!evidenceIds.has(evidenceId)) throw new Error(`event ${record.id} references unknown evidence ${evidenceId}`);
-}
-
-for (const record of evidence) {
-  for (const subjectId of record.subject_ids) if (!entityIds.has(subjectId)) throw new Error(`evidence ${record.id} references unknown subject ${subjectId}`);
+  assertDate(record.event_date, `event ${record.id} event_date`);
+  assertArray(record.evidence_ids, `event ${record.id} evidence_ids`, { nonEmpty: true });
+  for (const evidenceId of record.evidence_ids) {
+    if (!evidenceIds.has(evidenceId)) throw new Error(`event ${record.id} references unknown evidence ${evidenceId}`);
+    const subjects = new Set(evidenceById.get(evidenceId).subject_ids);
+    if (!subjects.has(record.entity_id)) {
+      throw new Error(`event ${record.id} evidence ${evidenceId} must name event entity ${record.entity_id}`);
+    }
+  }
 }
 
 console.log(`Validated ${programs.length} programs, ${providers.length} providers, ${relations.length} relations, ${events.length} events, and ${evidence.length} evidence records.`);
