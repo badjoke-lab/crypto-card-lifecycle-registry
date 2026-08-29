@@ -166,5 +166,41 @@
     "accessed_at": "2026-08-29",
     "reliability": "high",
     "claim_scope": "temporary U.S. signup limitation and Metal-card order pause as of 2026-06-02"
+  },
+  {
+    "id": "ccr_evidence_000015",
+    "subject_ids": ["ccr_program_000008", "ccr_provider_000008", "ccr_provider_000009", "ccr_provider_000006"],
+    "source_type": "official_documentation",
+    "title": "Gnosis Pay card identity and key payment partners",
+    "url": "https://help.gnosispay.com/hc/en-us/articles/39401294454036-Gnosis-Pay-s-Key-Partners",
+    "publisher": "Gnosis Pay",
+    "published_at": "2025-10-15",
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "Gnosis Pay card stack, Monavate and Paymentology issuing/processing roles, Visa network relationship"
+  },
+  {
+    "id": "ccr_evidence_000016",
+    "subject_ids": ["ccr_program_000009", "ccr_provider_000007", "ccr_provider_000008", "ccr_provider_000006"],
+    "source_type": "official_statement",
+    "title": "MiniPay launches Visa Card powered by Gnosis Pay",
+    "url": "https://gnosispay.com/blog/minipay-launches-visa-card-powered-by-gnosis-pay",
+    "publisher": "Gnosis Pay",
+    "published_at": "2026-06-23",
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "MiniPay Card launch, Gnosis Pay program-manager role, Monavate issuance, Visa network and self-custodial spending model"
+  },
+  {
+    "id": "ccr_evidence_000017",
+    "subject_ids": ["ccr_program_000010", "ccr_provider_000010", "ccr_provider_000006"],
+    "source_type": "official_documentation",
+    "title": "Crypto.com Visa Signature Credit Card product and issuer disclosure",
+    "url": "https://crypto.com/us/cards",
+    "publisher": "Crypto.com",
+    "published_at": null,
+    "accessed_at": "2026-08-29",
+    "reliability": "high",
+    "claim_scope": "program identity, Comenity Capital Bank issuer relationship, Visa network relationship and distinction from the prepaid card"
   }
 ]

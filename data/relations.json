@@ -78,5 +78,85 @@
     "end_date": null,
     "confidence": "high",
     "evidence_ids": ["ccr_evidence_000013"]
+  },
+  {
+    "id": "ccr_relation_000009",
+    "from_id": "ccr_program_000008",
+    "to_id": "ccr_provider_000008",
+    "relation_type": "issued_by",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000015"]
+  },
+  {
+    "id": "ccr_relation_000010",
+    "from_id": "ccr_program_000008",
+    "to_id": "ccr_provider_000009",
+    "relation_type": "processed_by",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000015"]
+  },
+  {
+    "id": "ccr_relation_000011",
+    "from_id": "ccr_program_000008",
+    "to_id": "ccr_provider_000006",
+    "relation_type": "uses_network",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000015"]
+  },
+  {
+    "id": "ccr_relation_000012",
+    "from_id": "ccr_program_000009",
+    "to_id": "ccr_provider_000007",
+    "relation_type": "uses_provider",
+    "start_date": "2026-06-23",
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000016"]
+  },
+  {
+    "id": "ccr_relation_000013",
+    "from_id": "ccr_program_000009",
+    "to_id": "ccr_provider_000008",
+    "relation_type": "issued_by",
+    "start_date": "2026-06-23",
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000016"]
+  },
+  {
+    "id": "ccr_relation_000014",
+    "from_id": "ccr_program_000009",
+    "to_id": "ccr_provider_000006",
+    "relation_type": "uses_network",
+    "start_date": "2026-06-23",
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000016"]
+  },
+  {
+    "id": "ccr_relation_000015",
+    "from_id": "ccr_program_000010",
+    "to_id": "ccr_provider_000010",
+    "relation_type": "issued_by",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000017"]
+  },
+  {
+    "id": "ccr_relation_000016",
+    "from_id": "ccr_program_000010",
+    "to_id": "ccr_provider_000006",
+    "relation_type": "uses_network",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000017"]
   }
 ]
