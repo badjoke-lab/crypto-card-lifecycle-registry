@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": "ccr_relation_000001",
+    "from_id": "ccr_program_000001",
+    "to_id": "ccr_provider_000001",
+    "relation_type": "uses_provider",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "high",
+    "evidence_ids": ["ccr_evidence_000002"]
+  },
+  {
+    "id": "ccr_relation_000002",
+    "from_id": "ccr_program_000002",
+    "to_id": "ccr_provider_000001",
+    "relation_type": "uses_provider",
+    "start_date": null,
+    "end_date": null,
+    "confidence": "medium",
+    "evidence_ids": ["ccr_evidence_000003"]
+  }
+]
