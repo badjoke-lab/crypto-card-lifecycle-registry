@@ -31,15 +31,16 @@
         <div id="nodes"></div>
         <div id="empty" class="empty" hidden>No matching canonical records.</div>
       </div>
+      <div id="incident-window" class="incident-window" hidden></div>
       <div id="focus-strip" class="focus-strip" aria-live="polite"></div>
     </section>
 
-    <section class="trace-section">
+    <section class="trace-section" id="history">
       <div class="section-title"><div><p class="eyebrow">HISTORY TRACE</p><h2 id="trace-title">Material changes</h2></div><div id="filters" class="filters"><button class="active" data-filter="all">All</button><button data-filter="incident">Incidents</button><button data-filter="change">Changes</button><button data-filter="remediation">Remediation</button></div></div>
       <div id="trace" class="trace"></div>
     </section>
 
-    <section class="evidence-section">
+    <section class="evidence-section" id="evidence-path">
       <div class="section-title"><div><p class="eyebrow">EVIDENCE PATH</p><h2>Why this connection exists</h2></div><p class="hint">Select a relationship or history point.</p></div>
       <div id="evidence" class="evidence"><p>Select a node or event to inspect its canonical evidence.</p></div>
     </section>
