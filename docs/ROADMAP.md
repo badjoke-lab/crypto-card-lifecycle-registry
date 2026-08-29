@@ -51,22 +51,27 @@ These follow-ups do not block record growth.
 
 See `docs/RECORD_GROWTH_POLICY.md`.
 
-## Phase 4 — Graph-first public UI — DESIGN LOCKED / IMPLEMENTATION STARTED
+## Phase 4 — Graph-first public UI — COMPLETE / VISUAL QA CONTINUES
 
-CCLR will not use the standard Ledger Series KPI-card/table dashboard shell. The approved direction is a graph-first exploration interface documented in `docs/UI_SPEC.md`.
+CCLR does not use the standard Ledger Series KPI-card/table dashboard shell. The public interface is a graph-first exploration surface documented in `docs/UI_SPEC.md`.
 
-Implementation slices:
+Implemented:
 - responsive application shell and relationship-field viewport
 - canonical data loader / normalized graph model
 - node and edge focus/recentering
+- role-directed relationship lanes
+- multi-hop exploration trails with shareable/restorable routes
+- registry overview and cross-entity incident atlas
 - lifecycle history trace derived from canonical events
 - evidence access directly from relationships/events
 - provider-incident vs program-impact overlays
-- program/provider focus routes that preserve graph context
-- methodology/about and correction path
-- mobile focus-first navigation, accessibility and reduced-motion support
+- incident-to-remediation chronological flows without inferred causation
+- program/provider/network focus routes that preserve graph context
+- public methodology and correction paths
+- mobile focus-first relationship navigation
+- keyboard focus semantics, skip navigation, touch-target improvements and reduced-motion support
 
-Phase 4 implementation may proceed in parallel with bounded Phase 3 record-growth batches. Mockup-only facts must never be copied into canonical data.
+Implementation is complete at repository level. Browser/device visual QA may still produce bounded polish fixes, but it is not a blocker for Phase 3 record growth.
 
 ## Phase 5 — Monitoring
 
@@ -78,6 +83,6 @@ Phase 4 implementation may proceed in parallel with bounded Phase 3 record-growt
 
 ## Current lanes
 
-1. Phase 3 reviewed record growth remains the canonical-data lane.
-2. Phase 4 graph-first UI implementation runs in parallel and consumes only reviewed canonical data.
-3. Rain follow-up in Issue #1 runs separately and must not stall either lane.
+1. Phase 3 reviewed record growth is the primary canonical-data lane.
+2. Phase 4 is implementation-complete; only bounded visual/accessibility polish remains when evidence from actual QA warrants it.
+3. Rain follow-up in Issue #1 runs separately and must not stall record growth.
