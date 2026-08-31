@@ -1,0 +1,32 @@
+name: Project network integrity
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'methodology.html'
+      - 'corrections.html'
+      - '.github/workflows/project-network-integrity.yml'
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 5 * * 1'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify every public page against HEI authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          authority_url='https://raw.githubusercontent.com/badjoke-lab/historical-exchange-index/main/config/public-project-network.json'
+          curl -fsSL "$authority_url" -o /tmp/public-project-network.json
+          jq -e '.schema_version == "1.0.0" and (.members | length) >= 1' /tmp/public-project-network.json >/dev/null
+          for source in index.html methodology.html corrections.html; do
+            while IFS= read -r url; do
+              grep -Fq "$url" "$source" || { echo "Missing project network URL in $source: $url"; exit 1; }
+            done < <(jq -r '.members[].url' /tmp/public-project-network.json)
+          done
