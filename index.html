@@ -9,13 +9,14 @@
   <link rel="stylesheet" href="./role-graph.css">
   <link rel="stylesheet" href="./overview.css">
   <link rel="stylesheet" href="./accessibility.css">
+  <link rel="stylesheet" href="./footer-compact.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to registry</a>
   <header class="topbar">
     <a class="brand" href="#/overview" aria-label="Crypto Card Lifecycle Registry overview"><span>CCLR</span><small>Crypto Card Lifecycle Registry</small></a>
     <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Find a program, provider, event…" autocomplete="off" aria-label="Find a card program or infrastructure provider"></label>
-    <nav aria-label="Primary"><button data-view="graph">Explore</button><button data-view="timeline">History</button><a href="./methodology.html">Methodology</a><a href="./support.html">Support</a></nav>
+    <nav aria-label="Primary"><button data-view="graph">Explore</button><button data-view="timeline">History</button><a href="./methodology.html">Methodology</a><a class="support-cta" href="./support.html">Support CCLR</a></nav>
   </header>
 
   <main id="main-content">
@@ -57,6 +58,15 @@
       <div class="section-title"><div><p class="eyebrow">EVIDENCE PATH</p><h2>Why this connection exists</h2></div><p class="hint">Select a relationship or history point.</p></div>
       <div id="evidence" class="evidence"><p>Select a node or event to inspect its canonical evidence.</p></div>
     </section>
+
+    <section class="support-banner" aria-labelledby="support-banner-title">
+      <div>
+        <p class="eyebrow">SUPPORT THE PUBLIC REGISTRY</p>
+        <h2 id="support-banner-title">Help keep CCLR maintained.</h2>
+        <p>Optional support helps fund evidence review, corrections, public data upkeep, broken-link review, and long-term maintenance. It never buys inclusion, ranking, or editorial influence.</p>
+      </div>
+      <a class="support-banner-cta" href="./support.html">Support CCLR <span aria-hidden="true">→</span></a>
+    </section>
   </main>
 
   <dialog id="entity-dialog"><button class="close" aria-label="Close">×</button><div id="entity-detail"></div></dialog>
@@ -66,60 +76,24 @@
       <div class="ledger-footer-intro">
         <div>
           <p class="eyebrow">BADJOKE-LAB LEDGER NETWORK</p>
-          <h2>Explore the other registries</h2>
-          <p>CCLR is one part of a connected set of evidence-backed historical registries. Jump directly to another ledger below.</p>
+          <h2>Other registries</h2>
         </div>
-        <a class="ledger-hub-link" href="https://badjoke-lab.com/">View all BadJoke-Lab projects <span aria-hidden="true">↗</span></a>
+        <a class="ledger-hub-link" href="https://badjoke-lab.com/">BadJoke-Lab Hub <span aria-hidden="true">↗</span></a>
       </div>
 
       <nav class="ledger-network-grid" aria-label="BadJoke-Lab ledger network">
-        <a class="ledger-network-card" href="https://hei.badjoke-lab.com/">
-          <span class="ledger-code">HEI</span>
-          <strong>Historical Exchange Index</strong>
-          <small>Crypto exchange histories, lifecycle events and evidence.</small>
-          <span class="ledger-open">Open registry <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="ledger-network-card" href="https://www.stableorgone.com/">
-          <span class="ledger-code">SOG</span>
-          <strong>Stable or Gone</strong>
-          <small>Stablecoin lifecycle, reserve, redemption and event history.</small>
-          <span class="ledger-open">Open registry <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="ledger-network-card" href="https://cya.badjoke-lab.com/">
-          <span class="ledger-code">CYA</span>
-          <strong>Crypto Yield Archive</strong>
-          <small>Historical record of crypto yield and lending platforms.</small>
-          <span class="ledger-open">Open registry <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="ledger-network-card" href="https://bir.badjoke-lab.com/">
-          <span class="ledger-code">BIR</span>
-          <strong>Bridge Incident Registry</strong>
-          <small>Cross-chain bridge incidents, impact and aftermath.</small>
-          <span class="ledger-open">Open registry <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="ledger-network-card" href="https://mag.badjoke-lab.com/">
-          <span class="ledger-code">MAG</span>
-          <strong>Minted &amp; Gone</strong>
-          <small>NFT marketplace histories, shutdowns and transitions.</small>
-          <span class="ledger-open">Open registry <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="ledger-network-card" href="https://wlr.badjoke-lab.com/">
-          <span class="ledger-code">WLR</span>
-          <strong>Wallet Lifecycle Registry</strong>
-          <small>Crypto wallet products, incidents, fixes and lifecycle changes.</small>
-          <span class="ledger-open">Open registry <span aria-hidden="true">→</span></span>
-        </a>
-        <div class="ledger-network-card ledger-network-card-current" aria-current="page">
-          <span class="ledger-code">CCLR</span>
-          <strong>Crypto Card Lifecycle Registry</strong>
-          <small>Crypto card programs and the payment infrastructure behind them.</small>
-          <span class="ledger-current">You are here</span>
-        </div>
+        <a class="ledger-network-card" href="https://hei.badjoke-lab.com/"><span class="ledger-code">HEI</span><strong>Historical Exchange Index</strong></a>
+        <a class="ledger-network-card" href="https://www.stableorgone.com/"><span class="ledger-code">SOG</span><strong>Stable or Gone</strong></a>
+        <a class="ledger-network-card" href="https://cya.badjoke-lab.com/"><span class="ledger-code">CYA</span><strong>Crypto Yield Archive</strong></a>
+        <a class="ledger-network-card" href="https://bir.badjoke-lab.com/"><span class="ledger-code">BIR</span><strong>Bridge Incident Registry</strong></a>
+        <a class="ledger-network-card" href="https://mag.badjoke-lab.com/"><span class="ledger-code">MAG</span><strong>Minted &amp; Gone</strong></a>
+        <a class="ledger-network-card" href="https://wlr.badjoke-lab.com/"><span class="ledger-code">WLR</span><strong>Wallet Lifecycle Registry</strong></a>
+        <div class="ledger-network-card ledger-network-card-current" aria-current="page"><span class="ledger-code">CCLR</span><strong>Crypto Card Lifecycle Registry</strong></div>
       </nav>
 
       <div class="ledger-footer-bottom">
         <span>CCLR · historical registry, not a ranking or safety score</span>
-        <nav aria-label="CCLR project links"><a href="./methodology.html">Methodology</a><a href="./corrections.html">Corrections</a><a href="./support.html">Support</a><a href="https://github.com/badjoke-lab/crypto-card-lifecycle-registry">GitHub ↗</a></nav>
+        <nav aria-label="CCLR project links"><a href="./methodology.html">Methodology</a><a href="./corrections.html">Corrections</a><a href="./support.html">Support CCLR</a><a href="https://github.com/badjoke-lab/crypto-card-lifecycle-registry">GitHub ↗</a></nav>
       </div>
     </div>
   </footer>
