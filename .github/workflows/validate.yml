@@ -19,6 +19,7 @@ jobs:
         run: |
           node --check app.js
           node --check public-ui.js
+          node --check analytics.js
           node --check scripts/build-seo-pages.mjs
       - name: Build crawlable SEO surface
         run: node scripts/build-seo-pages.mjs
@@ -27,6 +28,16 @@ jobs:
           test -s sitemap.xml
           test -s robots.txt
           test -s program/metamask-card/index.html
+          test -s provider/mastercard/index.html
+      - name: Check root discoverability and public operations links
+        run: |
+          grep -Fq 'https://badjoke-lab.github.io/crypto-card-lifecycle-registry/' index.html
+          grep -Fq 'rel="canonical"' index.html
+          grep -Fq 'application/ld+json' index.html
+          grep -Fq './contact.html' index.html
+          grep -Fq './analytics.js' index.html
+          grep -Fq 'donation_address_copy' support.html
+          ! grep -Fq 'wallet options used by HEI' support.html
       - name: Check required public UI files
         run: |
           test -s index.html
@@ -36,5 +47,7 @@ jobs:
           test -s accessibility.css
           test -s app.js
           test -s public-ui.js
+          test -s analytics.js
           test -s contact.html
+          test -s support.html
           test -s googlecd270d496efd8db3.html
