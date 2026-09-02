@@ -29,15 +29,21 @@ jobs:
           test -s robots.txt
           test -s program/metamask-card/index.html
           test -s provider/mastercard/index.html
+          grep -Fq 'https://cclr.badjoke-lab.com/' sitemap.xml
+          grep -Fq 'Sitemap: https://cclr.badjoke-lab.com/sitemap.xml' robots.txt
+          grep -Fq 'G-GC3PS5DW5M' program/metamask-card/index.html
       - name: Check root discoverability and public operations links
         run: |
-          grep -Fq 'https://badjoke-lab.github.io/crypto-card-lifecycle-registry/' index.html
+          grep -Fq 'https://cclr.badjoke-lab.com/' index.html
           grep -Fq 'rel="canonical"' index.html
           grep -Fq 'application/ld+json' index.html
+          grep -Fq 'G-GC3PS5DW5M' index.html
           grep -Fq './contact.html' index.html
           grep -Fq './analytics.js' index.html
           grep -Fq 'donation_address_copy' support.html
+          grep -Fq 'G-GC3PS5DW5M' support.html
           ! grep -Fq 'wallet options used by HEI' support.html
+          ! grep -R -Fq 'https://badjoke-lab.github.io/crypto-card-lifecycle-registry/' index.html methodology.html corrections.html contact.html support.html scripts/build-seo-pages.mjs
       - name: Check required public UI files
         run: |
           test -s index.html
