@@ -19,6 +19,14 @@ jobs:
         run: |
           node --check app.js
           node --check public-ui.js
+          node --check scripts/build-seo-pages.mjs
+      - name: Build crawlable SEO surface
+        run: node scripts/build-seo-pages.mjs
+      - name: Check generated SEO files
+        run: |
+          test -s sitemap.xml
+          test -s robots.txt
+          test -s program/metamask-card/index.html
       - name: Check required public UI files
         run: |
           test -s index.html
@@ -28,3 +36,5 @@ jobs:
           test -s accessibility.css
           test -s app.js
           test -s public-ui.js
+          test -s contact.html
+          test -s googlecd270d496efd8db3.html
