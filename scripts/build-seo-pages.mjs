@@ -2,8 +2,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const ROOT = process.cwd();
-const SITE_URL = 'https://badjoke-lab.github.io/crypto-card-lifecycle-registry';
+const SITE_URL = 'https://cclr.badjoke-lab.com';
 const SITE_NAME = 'Crypto Card Lifecycle Registry';
+const GA4_ID = 'G-GC3PS5DW5M';
 
 const escapeHtml = (value = '') => String(value)
   .replaceAll('&', '&amp;')
@@ -48,6 +49,7 @@ function page({ kind, slug, name, summary, status, officialUrl }) {
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>${escapeHtml(name)} — ${SITE_NAME}</title>
   <meta name="description" content="${escapeHtml(description)}">
+  <meta name="ga4-measurement-id" content="${GA4_ID}">
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${SITE_NAME}">
@@ -71,6 +73,7 @@ function page({ kind, slug, name, summary, status, officialUrl }) {
     ${officialUrl ? `<p><a href="${escapeHtml(officialUrl)}" rel="external nofollow">Official source ↗</a></p>` : ''}
     <p><a href="${SITE_URL}/">Back to CCLR</a></p>
   </main>
+  <script src="${SITE_URL}/analytics.js" defer></script>
 </body>
 </html>`;
 }
