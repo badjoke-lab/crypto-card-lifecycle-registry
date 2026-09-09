@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="./app-v2.css">
   <link rel="stylesheet" href="./accessibility.css">
   <link rel="stylesheet" href="./footer-compact.css">
+  <link rel="stylesheet" href="./readability-fixes.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to registry</a>
@@ -60,7 +61,7 @@
       </div>
       <div class="explore-layout">
         <section class="explore-stage" aria-label="Focused relationship graph">
-          <div class="explore-stage-head"><strong>FOCUS GRAPH</strong><small>Click a program to reveal its other dependencies. Click an edge to inspect evidence.</small></div>
+          <div class="explore-stage-head"><strong>FOCUS GRAPH</strong><small>Click a node for details. Program nodes can also reveal their other dependencies. Click an edge to inspect evidence.</small></div>
           <div class="explore-start">
             <input id="explore-start-search" type="search" placeholder="Search a program, network or provider…" aria-label="Search an entity to explore">
             <div id="explore-start-results" class="explore-start-results"></div>
@@ -137,5 +138,6 @@
   <script src="./analytics.js" defer></script>
   <script src="./public-ui.js" defer></script>
   <script type="module" src="./app.js"></script>
+  <script type="module" src="./entity-detail.js"></script>
 </body>
 </html>
