@@ -2,7 +2,7 @@ const overviewPaths=['programs','providers','relations','events'];
 const overviewData=Object.fromEntries(await Promise.all(overviewPaths.map(async p=>[p,await fetch(`./data/${p}.json`).then(r=>r.json())])));
 const overviewById=new Map([...overviewData.programs,...overviewData.providers].map(x=>[x.id,x]));
 const dashboard=document.querySelector('#registry-overview');
-const escOverview=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+const escOverview=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const isProgram=id=>id?.startsWith('ccr_program_');
 const providerType=(p,t)=>Array.isArray(p?.provider_types)&&p.provider_types.includes(t);
 const relatedPrograms=id=>new Set(overviewData.relations.filter(r=>r.from_id===id||r.to_id===id).flatMap(r=>[r.from_id,r.to_id].filter(isProgram)));
