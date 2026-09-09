@@ -51,27 +51,35 @@ These follow-ups do not block record growth.
 
 See `docs/RECORD_GROWTH_POLICY.md`.
 
-## Phase 4 — Graph-first public UI — COMPLETE / VISUAL QA CONTINUES
+## Phase 4 — Public UI — COMPLETE / FOUR-MODE REFACTOR IN VISUAL QA
 
-CCLR does not use the standard Ledger Series KPI-card/table dashboard shell. The public interface is a graph-first exploration surface documented in `docs/UI_SPEC.md`.
+CCLR does not use the standard Ledger Series KPI-card/table dashboard shell. The public interface is documented in `docs/UI_SPEC.md`.
 
-Implemented:
-- responsive application shell and relationship-field viewport
-- canonical data loader / normalized graph model
-- node and edge focus/recentering
-- role-directed relationship lanes
-- multi-hop exploration trails with shareable/restorable routes
-- registry overview and cross-entity incident atlas
-- lifecycle history trace derived from canonical events
-- evidence access directly from relationships/events
-- provider-incident vs program-impact overlays
-- incident-to-remediation chronological flows without inferred causation
-- program/provider/network focus routes that preserve graph context
-- public methodology and correction paths
+Current interaction contract:
+- Overview is a compact master-detail ecosystem view with no all-record graph
+- Explore is a bounded node-and-edge focus graph
+- highly connected providers/networks paginate direct program neighbors
+- only one connected program expands to a second hop at a time
+- History is an independent canonical event surface
+- Incidents is an independent incident/remediation surface
+- evidence stays inside the current mode
+- mode changes are explicit; no relationship/event click may auto-scroll into another mode
+- one router owns public hash state
+- `/index.html` and `#/overview` are legacy entry forms and normalize to `/`
+
+Preserved graph-first capabilities:
+- canonical data loader / normalized entity-relation model
+- node and edge focus exploration
+- role-distinct program/provider/network nodes
+- relationship evidence access
+- provider-incident vs program-impact separation
+- program/provider/network focus routes
 - mobile focus-first relationship navigation
-- keyboard focus semantics, skip navigation, touch-target improvements and reduced-motion support
+- keyboard semantics and reduced-motion/accessibility support
 
-Implementation is complete at repository level. Browser/device visual QA may still produce bounded polish fixes, but it is not a blocker for Phase 3 record growth.
+The former all-record Overview graph and its independent Overview router/height controller are retired from the active public shell because they became unreadable as canonical record growth increased.
+
+Visual/browser QA may still produce bounded polish fixes, but Phase 3 record growth remains the primary canonical-data lane.
 
 ## Phase 5 — Monitoring
 
@@ -84,5 +92,5 @@ Implementation is complete at repository level. Browser/device visual QA may sti
 ## Current lanes
 
 1. Phase 3 reviewed record growth is the primary canonical-data lane.
-2. Phase 4 is implementation-complete; only bounded visual/accessibility polish remains when evidence from actual QA warrants it.
+2. Phase 4 four-mode UI refactor is in browser/device visual QA; fixes must preserve the one-mode/one-router interaction contract.
 3. Rain follow-up in Issue #1 runs separately and must not stall record growth.

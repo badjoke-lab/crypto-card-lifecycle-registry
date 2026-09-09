@@ -2,56 +2,162 @@
 
 ## Design thesis
 
-CCLR is not a generic registry dashboard and must not reuse the standard Ledger Series card/KPI/table shell.
+CCLR is not a generic registry dashboard and must not reuse the standard Ledger Series KPI/table shell.
 
-The primary public experience is an **exploration graph**: a selected crypto card program or infrastructure provider sits in a relationship field and the user follows evidenced dependencies, incidents, remediations, and lifecycle changes through connected paths.
+The public interface has four explicit modes with one responsibility each:
 
-The visual direction approved for implementation is the graph-first mockup discussed on 2026-08-29. The mockup is directional, not canonical data: labels, dates, counts, edges, and statuses shown in the image must be generated from canonical records and must never be copied when unsupported.
+1. **Overview** — understand concentration and shared dependencies without drawing the full graph.
+2. **Explore** — follow evidenced program/provider/network relationships through a bounded focus graph.
+3. **History** — inspect canonical lifecycle events without changing graph state automatically.
+4. **Incidents** — inspect canonical incident/remediation event owners without inheriting provider impact to adjacent programs.
 
-## Core interaction model
+The dark graph-first visual direction approved on 2026-08-29 remains the visual basis. Mockup labels, dates, counts, edges and statuses are directional only and must be generated from reviewed canonical data.
 
-### Relationship field
+## Global interaction contract
 
-The dominant desktop surface is an interactive relationship field, not a table. Nodes may represent card programs, providers, networks, and custody/collateral/settlement infrastructure when canonical records support them. Edges represent canonical `relation` records and use canonical relation types. No inferred edge may be rendered as fact.
+### One mode at a time
 
-Selecting a node recenters the field and updates surrounding context without requiring a conventional dashboard-detail split.
+Overview, Explore, History and Incidents are mutually exclusive public panels. A click inside one mode must not silently switch to another mode or scroll the page to a different mode.
 
-### Incident overlays
+Cross-mode navigation is explicit through a labelled link or top navigation control.
 
-Material incident/event records are overlays on the relationship field and history trace. Provider-side incidents and program-specific impact remain visually distinct. A provider incident must not make every connected program appear affected. `confirmed_unaffected` appears only when an explicit canonical event exists.
+### Single router owner
 
-### History trace
+One application router owns public route state. Secondary modules must not independently mutate hashes, route state or scroll position.
 
-Lifecycle is a continuous trace through time rather than a generic activity table. Event points use canonical event date, type, impact and confidence, with filters for lifecycle change, incident, remediation/reimbursement, and infrastructure change.
+Supported public routes:
 
-### Evidence access
+- `/` — Overview
+- `/#/explore` — Explore start
+- `/#/explore/program/:slug` — focused program graph
+- `/#/explore/provider/:slug` — focused provider graph
+- `/#/explore/network/:slug` — focused network graph
+- `/#/history` — History
+- `/#/incidents` — Incidents
 
-Every rendered relationship or event exposes its supporting evidence in one interaction. Show source type, publisher, date, reliability and claim scope, with a source link.
+`/index.html` and `/index.html#/overview` are legacy entry forms only. Client startup normalizes them to `/`; internal links must not generate `index.html`, and `#/overview` is not a canonical public state.
 
-### Focus mode
+### No automatic cross-section scrolling
 
-A focused entity view keeps the exploration model instead of reverting to a generic profile-card page. It shows identity/current status, immediate dependency neighborhood, history trace, incident impact states, evidence-backed paths, and official source.
+Selecting a relationship, node, event or incident updates the current mode in place. It must not automatically call attention to History, Evidence or another page section through `scrollIntoView()` or equivalent behaviour.
 
-## Home composition
+## Overview
 
-Open with compact CCLR identity/search controls, a large live exploration field seeded from canonical relationships, a history trace aligned with selected graph context, and compact evidence/incident context where useful. Counts are secondary; avoid KPI-card rows, leaderboard-like program tables, and a permanent right detail drawer as the primary information architecture.
+Overview is a compact master-detail ecosystem view, not the all-record graph.
+
+### Summary
+
+Show reviewed canonical counts for programs, providers, relationships and lifecycle events as secondary context.
+
+### Ecosystem master list
+
+The left/master surface shows:
+
+- network concentration derived from evidenced network relations
+- the most shared non-network infrastructure providers
+
+Selecting a network/provider:
+
+- does not change the URL
+- does not scroll the page
+- does not switch modes
+- only updates the Connection Inspector
+
+### Connection Inspector
+
+The right/detail surface has a stable footprint and shows:
+
+- selected network/provider identity
+- number of connected reviewed programs
+- a bounded page of connected programs
+- each program's other evidenced dependencies
+- shared co-dependencies across the selected program set
+- an explicit `Inspect in Explore` action
+
+Large connection sets are paginated in bounded pages rather than rendered as a growing list or line field.
+
+Overview never draws all canonical relationship edges.
+
+## Explore
+
+Explore preserves CCLR's node-and-edge identity but uses a bounded focus graph instead of the full-registry graph.
+
+### Start state
+
+Do not render a graph until a program/provider/network has been selected. Offer search plus common starting entities.
+
+### One-hop focus graph
+
+A focused entity renders only its direct canonical neighborhood.
+
+For highly connected providers/networks, direct program neighbors are paginated. The graph must not place every connected program on the canvas simultaneously.
+
+### Progressive second hop
+
+When the focus is a provider/network, selecting one connected program may reveal that program's other evidenced provider/network dependencies. Only one connected program is expanded at a time.
+
+This produces a bounded structure:
+
+`selected provider/network -> visible program page -> one program's other dependencies`
+
+rather than an accumulating all-record graph.
+
+### Relationship evidence
+
+Selecting an edge updates an Explore-side evidence/detail panel. It does not change routes, scroll to another section or switch modes.
+
+Selecting a different root entity is an explicit focus change and may update the Explore route.
+
+## History
+
+History is an independent event surface.
+
+- reverse chronological canonical events
+- filters for launch, shutdown, provider change/migration, incident and remediation
+- selecting an event updates the local event detail/evidence panel only
+- `Open entity in Explore` is the explicit cross-mode action
+
+History must not automatically recenter the graph or open Explore.
+
+## Incidents
+
+Incidents is an independent incident/remediation surface.
+
+- only canonical event owners with incident/remediation events are shown
+- provider-wide incidents and program-specific impact remain distinct
+- adjacency never implies impact
+- selecting an event updates the local detail/evidence panel only
+- explicit navigation is required to inspect the related entity in Explore
+
+## Evidence access
+
+Every rendered relationship or event exposes supporting canonical evidence in the same mode, including source type, publisher, publication date, reliability, claim scope and source link where present.
+
+Evidence must not require an automatic page jump.
 
 ## Search
 
-Search is entity/event/evidence navigation in v1, not an AI claim-generation surface. Natural-language/AI search is deferred until a separate evidence-grounding contract exists.
+Search is entity navigation, not AI claim generation. Selecting a result explicitly opens that entity in Explore.
+
+Natural-language/AI search remains deferred until a separate evidence-grounding contract exists.
 
 ## Visual language
 
-- dark field suitable for dense relationship lines
-- restrained neon accents used semantically
-- distinguish program/provider/network/infrastructure roles
-- incident/impact colors separate from lifecycle status colors
-- readable typography on ordinary mobile displays
-- functional motion only: recentering, path highlighting and history focus
+- dark field with restrained semantic neon accents
+- program/provider/network roles visually distinct
+- incident/remediation colors separate from lifecycle status
+- dense data should be paginated or progressively disclosed instead of overplotted
+- motion is functional and local; no surprise page-position changes
 
 ## Mobile
 
-Do not shrink the desktop graph into an unreadable canvas. Use focus-first navigation: selected entity, one-hop relationships, history trace, evidence sheet from an edge/event, and persistent search/entity switching. No horizontal page overflow is required to discover relations, incidents or evidence.
+Do not shrink a desktop all-record graph into an unreadable canvas.
+
+- Overview master/detail stacks vertically
+- Explore remains focus-first and bounded
+- no horizontal overflow is required to discover relations
+- History and Incidents use local detail panels below their lists
+- touch targets remain usable on ordinary mobile displays
 
 ## Canonical integrity rules
 
@@ -62,23 +168,11 @@ Do not shrink the desktop graph into an unreadable canvas. Use focus-first navig
 - provider-wide facts and program-specific impact are separate visual states
 - staging/monitoring data is never rendered as canonical public fact
 
-## Initial implementation slices
-
-1. static application shell and responsive graph viewport
-2. canonical data loader and normalized graph model
-3. node/edge exploration and focus state
-4. history trace from canonical events
-5. evidence drawer/sheet linked from edges and events
-6. incident impact overlay with affected/unaffected/unknown separation
-7. program/provider focus routes
-8. methodology/about and correction path
-9. accessibility, reduced-motion and mobile validation
-
-## Non-goals for v1
+## Non-goals
 
 - rankings or safety scores
 - rewards/APY comparison
 - merchant acceptance directory
 - AI-generated conclusions
 - inferred provider impact
-- decorative dashboard analytics unrelated to lifecycle exploration
+- a full-registry relationship graph as the default interactive surface
