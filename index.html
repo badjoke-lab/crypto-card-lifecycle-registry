@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./role-graph.css">
   <link rel="stylesheet" href="./overview.css">
+  <link rel="stylesheet" href="./overview-dashboard.css">
   <link rel="stylesheet" href="./accessibility.css">
   <link rel="stylesheet" href="./footer-compact.css">
 </head>
@@ -37,6 +38,8 @@
       <h1>Follow the card.<br><em>See what it depends on.</em></h1>
       <p>Explore evidenced relationships between crypto card programs, issuers, processors, networks and infrastructure — then trace what changed over time.</p>
     </section>
+
+    <section id="registry-overview" class="registry-overview" aria-label="Registry overview" hidden></section>
 
     <section class="explorer" aria-label="Relationship explorer">
       <div class="explorer-head">
@@ -111,6 +114,7 @@
   </footer>
   <script src="./analytics.js" defer></script>
   <script src="./public-ui.js" defer></script>
+  <script type="module" src="./overview-dashboard.js"></script>
   <script type="module" src="./app.js"></script>
 </body>
 </html>
