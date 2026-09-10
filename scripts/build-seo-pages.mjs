@@ -5,6 +5,7 @@ const ROOT = process.cwd();
 const SITE_URL = 'https://cclr.badjoke-lab.com';
 const SITE_NAME = 'Crypto Card Lifecycle Registry';
 const GA4_ID = 'G-GC3PS5DW5M';
+const RECORDS_URL = `${SITE_URL}/records/`;
 
 const escapeHtml = (value = '') => String(value)
   .replaceAll('&', '&amp;')
@@ -71,7 +72,61 @@ function page({ kind, slug, name, summary, status, officialUrl }) {
     ${status ? `<p><strong>Status:</strong> ${escapeHtml(status)}</p>` : ''}
     <p><a href="${interactive}">Open this record in the interactive registry →</a></p>
     ${officialUrl ? `<p><a href="${escapeHtml(officialUrl)}" rel="external nofollow">Official source ↗</a></p>` : ''}
+    <p><a href="${RECORDS_URL}">Browse all CCLR records</a></p>
     <p><a href="${SITE_URL}/">Back to CCLR</a></p>
+  </main>
+  <script src="${SITE_URL}/analytics.js" defer></script>
+</body>
+</html>`;
+}
+
+function directoryPage() {
+  const programLinks = programs
+    .filter((item) => item?.slug && item?.canonical_name)
+    .sort((a, b) => a.canonical_name.localeCompare(b.canonical_name))
+    .map((item) => `<li><a href="${SITE_URL}/program/${encodeURIComponent(item.slug)}/">${escapeHtml(item.canonical_name)}</a>${item.status ? ` <small>— ${escapeHtml(item.status)}</small>` : ''}</li>`)
+    .join('\n');
+  const providerLinks = providers
+    .filter((item) => item?.slug && item?.canonical_name)
+    .sort((a, b) => a.canonical_name.localeCompare(b.canonical_name))
+    .map((item) => `<li><a href="${SITE_URL}/provider/${encodeURIComponent(item.slug)}/">${escapeHtml(item.canonical_name)}</a>${item.status ? ` <small>— ${escapeHtml(item.status)}</small>` : ''}</li>`)
+    .join('\n');
+  const structured = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `All records — ${SITE_NAME}`,
+    description: 'Browse all public crypto card program and infrastructure provider records in CCLR.',
+    url: RECORDS_URL,
+    isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: `${SITE_URL}/` }
+  };
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>All records — ${SITE_NAME}</title>
+  <meta name="description" content="Browse all public crypto card program and infrastructure provider records in CCLR.">
+  <link rel="canonical" href="${RECORDS_URL}">
+  <meta name="robots" content="index,follow">
+  <script type="application/ld+json">${JSON.stringify(structured).replaceAll('<', '\\u003c')}</script>
+  <link rel="stylesheet" href="${SITE_URL}/styles.css">
+  <link rel="stylesheet" href="${SITE_URL}/info.css">
+</head>
+<body>
+  <main class="info-page">
+    <p class="eyebrow">PUBLIC RECORD DIRECTORY</p>
+    <h1>All CCLR records</h1>
+    <p>This static directory provides a crawlable path to every public card-program and infrastructure-provider record. Use the interactive registry for relationship exploration.</p>
+    <p><a href="${SITE_URL}/">Open the CCLR overview</a></p>
+    <section aria-labelledby="programs-heading">
+      <h2 id="programs-heading">Card programs (${programs.length})</h2>
+      <ul>${programLinks}</ul>
+    </section>
+    <section aria-labelledby="providers-heading">
+      <h2 id="providers-heading">Infrastructure providers (${providers.length})</h2>
+      <ul>${providerLinks}</ul>
+    </section>
   </main>
   <script src="${SITE_URL}/analytics.js" defer></script>
 </body>
@@ -80,6 +135,7 @@ function page({ kind, slug, name, summary, status, officialUrl }) {
 
 const urls = [
   `${SITE_URL}/`,
+  RECORDS_URL,
   `${SITE_URL}/methodology.html`,
   `${SITE_URL}/corrections.html`,
   `${SITE_URL}/contact.html`,
@@ -116,8 +172,23 @@ for (const item of providers) {
   urls.push(`${SITE_URL}/provider/${encodeURIComponent(item.slug)}/`);
 }
 
+const recordsDir = path.join(ROOT, 'records');
+await ensureDir(recordsDir);
+await fs.writeFile(path.join(recordsDir, 'index.html'), directoryPage());
+
+const homePath = path.join(ROOT, 'index.html');
+let homeHtml = await fs.readFile(homePath, 'utf8');
+const crawlLinkMarker = 'data-crawl-directory="records"';
+if (!homeHtml.includes(crawlLinkMarker)) {
+  homeHtml = homeHtml.replace(
+    '</main>',
+    `  <aside ${crawlLinkMarker} aria-label="Public record directory"><p><a href="${RECORDS_URL}">Browse all card-program and provider records</a></p></aside>\n  </main>`
+  );
+  await fs.writeFile(homePath, homeHtml);
+}
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => `  <url><loc>${escapeHtml(url)}</loc></url>`).join('\n')}\n</urlset>\n`;
 await fs.writeFile(path.join(ROOT, 'sitemap.xml'), sitemap);
 await fs.writeFile(path.join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
-console.log(`SEO build complete: ${programs.length} program pages, ${providers.length} provider pages, ${urls.length} sitemap URLs.`);
+console.log(`SEO build complete: ${programs.length} program pages, ${providers.length} provider pages, ${urls.length} sitemap URLs, crawlable record directory enabled.`);
