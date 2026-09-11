@@ -27,11 +27,16 @@ jobs:
         run: |
           test -s sitemap.xml
           test -s robots.txt
+          test -s records/index.html
           test -s program/metamask-card/index.html
           test -s provider/mastercard/index.html
           grep -Fq 'https://cclr.badjoke-lab.com/' sitemap.xml
+          grep -Fq 'https://cclr.badjoke-lab.com/records/' sitemap.xml
           grep -Fq 'Sitemap: https://cclr.badjoke-lab.com/sitemap.xml' robots.txt
           grep -Fq 'G-GC3PS5DW5M' program/metamask-card/index.html
+          grep -Fq 'href="https://cclr.badjoke-lab.com/program/metamask-card/"' records/index.html
+          grep -Fq 'href="https://cclr.badjoke-lab.com/provider/mastercard/"' records/index.html
+          grep -Fq 'href="https://cclr.badjoke-lab.com/records/"' program/metamask-card/index.html
       - name: Check root discoverability and public operations links
         run: |
           grep -Fq 'https://cclr.badjoke-lab.com/' index.html
@@ -40,6 +45,8 @@ jobs:
           grep -Fq 'G-GC3PS5DW5M' index.html
           grep -Fq './contact.html' index.html
           grep -Fq './analytics.js' index.html
+          grep -Fq 'data-crawl-directory="records"' index.html
+          grep -Fq 'href="https://cclr.badjoke-lab.com/records/"' index.html
           grep -Fq 'donation_address_copy' support.html
           grep -Fq 'G-GC3PS5DW5M' support.html
           ! grep -Fq 'wallet options used by HEI' support.html
